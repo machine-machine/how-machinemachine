@@ -15,51 +15,54 @@
       --purple-light: #9d5ff5;
       --cyan:         #00D9FF;
       --cyan-dim:     #00b8d9;
+      --green:        #4ade80;
       --white:        #FFFFFF;
       --muted:        rgba(255,255,255,0.55);
       --card-bg:      rgba(255,255,255,0.04);
       --card-border:  rgba(255,255,255,0.08);
-      --text-max:     680px;
+      --text-max:     700px;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-
     html, body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       background: var(--navy);
       font-family: 'Inter', system-ui, sans-serif;
       color: var(--white);
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Layout ─────────────────────────────── */
     .page {
       max-width: var(--text-max);
       margin: 0 auto;
       padding: 80px 24px 120px;
     }
 
-    /* ── Header ─────────────────────────────── */
-    .header {
-      margin-bottom: 72px;
-    }
+    /* ── Header ── */
     .wordmark {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--cyan);
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
-    .header h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      line-height: 1.1;
-      margin: 0 0 24px;
-      letter-spacing: -0.02em;
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
     }
-    .header h1 span {
+    h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 32px;
+    }
+    h1 .accent {
       background: linear-gradient(135deg, var(--cyan), var(--purple-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -67,462 +70,491 @@
     }
     .preface {
       font-size: 17px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: var(--muted);
-      border-left: 2px solid var(--purple);
       padding-left: 20px;
-      margin: 0;
+      border-left: 2px solid rgba(124,58,237,0.5);
+      margin: 0 0 64px;
     }
 
-    /* ── Sections ───────────────────────────── */
-    .section {
-      margin-bottom: 72px;
-    }
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 8px;
-    }
-    .section h2 {
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 0 0 28px;
-      line-height: 1.2;
-    }
-    .section p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.82);
-      margin: 0 0 20px;
-    }
-    .section p:last-child { margin-bottom: 0; }
-
-    /* ── Stats bar ──────────────────────────── */
-    .stat-row {
-      display: flex;
-      gap: 24px;
-      margin: 32px 0;
-      flex-wrap: wrap;
-    }
-    .stat {
-      flex: 1;
-      min-width: 140px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .stat-value {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--cyan);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-value.positive { color: #4ade80; }
-    .stat-value.negative { color: #f87171; }
-    .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* ── Paths ──────────────────────────────── */
-    .path {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 16px;
-    }
-    .path-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 12px;
-    }
-    .path-tag {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .tag-a { background: rgba(0,217,255,0.12); color: var(--cyan); }
-    .tag-b { background: rgba(124,58,237,0.15); color: var(--purple-light); }
-    .tag-c { background: rgba(74,222,128,0.12); color: #4ade80; }
-    .tag-d { background: rgba(251,191,36,0.12); color: #fbbf24; }
-    .tag-e { background: rgba(248,113,113,0.12); color: #f87171; }
-    .path h3 {
-      font-size: 17px;
-      font-weight: 600;
-      margin: 0 0 4px;
-      letter-spacing: -0.01em;
-    }
-    .path-sub {
-      font-size: 12px;
-      color: var(--muted);
-      margin: 0 0 12px;
-    }
-    .path p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.72);
-      margin: 0;
-    }
-
-    /* ── Peter quotes ───────────────────────── */
-    .advisor-section {
-      margin-bottom: 72px;
-    }
-    .advisor-byline {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-    .advisor-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple), var(--cyan));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-    .advisor-name {
-      font-weight: 600;
-      font-size: 15px;
-    }
-    .advisor-title {
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .quote {
-      border-left: 2px solid var(--cyan);
-      padding: 20px 24px;
-      margin-bottom: 16px;
-      background: var(--card-bg);
-      border-radius: 0 12px 12px 0;
-    }
-    .quote p {
-      font-size: 17px;
-      line-height: 1.7;
-      font-style: italic;
-      color: rgba(255,255,255,0.9);
-      margin: 0;
-    }
-
-    /* ── Acquirers ──────────────────────────── */
-    .acquirer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 24px 0;
-    }
-    @media (max-width: 500px) { .acquirer-grid { grid-template-columns: 1fr; } }
-    .acquirer {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 18px 20px;
-    }
-    .acquirer h4 {
-      font-size: 14px;
-      font-weight: 700;
-      margin: 0 0 6px;
-    }
-    .acquirer p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    /* ── Ask section ────────────────────────── */
-    .ask-section {
-      background: rgba(124,58,237,0.08);
-      border: 1px solid rgba(124,58,237,0.2);
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 72px;
-    }
-    .ask-section h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 0 0 16px;
-      letter-spacing: -0.01em;
-    }
-    .ask-section p {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.78);
-      margin: 0 0 20px;
-    }
-    .questions {
-      list-style: none;
-      padding: 0;
-      margin: 24px 0 0;
-    }
-    .questions li {
-      font-size: 15px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.85);
-      padding: 12px 0;
-      border-bottom: 1px solid var(--card-border);
-      padding-left: 20px;
-      position: relative;
-    }
-    .questions li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--cyan);
-      font-size: 13px;
-    }
-    .questions li:last-child { border-bottom: none; }
-
-    /* ── Divider ────────────────────────────── */
+    /* ── Dividers ── */
     .divider {
       height: 1px;
       background: var(--card-border);
       margin: 64px 0;
     }
 
-    /* ── Footer ─────────────────────────────── */
-    .footer {
+    /* ── Section ── */
+    .sec-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin: 0 0 28px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.8);
+      margin: 0 0 22px;
+    }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--white); font-weight: 600; }
+    .hl { color: var(--cyan); font-weight: 600; }
+
+    /* ── Strange loop callout ── */
+    .loop-box {
+      background: rgba(0,217,255,0.05);
+      border: 1px solid rgba(0,217,255,0.15);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 32px 0;
+    }
+    .loop-box p {
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(255,255,255,0.85);
+      margin: 0;
+      line-height: 1.75;
+    }
+    .loop-box .attribution {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: normal;
+      margin-top: 12px;
+    }
+
+    /* ── Five layers ── */
+    .layers {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 32px 0;
+    }
+    .layer {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 18px 22px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+    }
+    .layer-num {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+      opacity: 0.6;
+      padding-top: 2px;
+      min-width: 24px;
+    }
+    .layer-content h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+    .layer-content p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Proof stat ── */
+    .proof-row {
+      display: flex;
+      gap: 16px;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+    .proof-stat {
+      flex: 1;
+      min-width: 130px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .proof-val {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .proof-val.pos { color: var(--green); }
+    .proof-val.neg { color: #f87171; }
+    .proof-val.neu { color: var(--cyan); }
+    .proof-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Paths ── */
+    .path {
+      padding: 22px 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+    .path-top {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .path-pill {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .p-a { background: rgba(0,217,255,0.1); color: var(--cyan); }
+    .p-b { background: rgba(124,58,237,0.15); color: var(--purple-light); }
+    .p-c { background: rgba(74,222,128,0.12); color: var(--green); }
+    .p-d { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .p-e { background: rgba(248,113,113,0.1); color: #f87171; }
+    .path h3 { font-size: 16px; font-weight: 700; margin: 0 0 3px; letter-spacing: -0.01em; }
+    .path-sub { font-size: 12px; color: var(--muted); margin: 0 0 10px; }
+    .path p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; margin: 0; }
+
+    /* ── Acquirers ── */
+    .acq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 28px 0;
+    }
+    @media (max-width: 480px) { .acq-grid { grid-template-columns: 1fr; } }
+    .acq {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .acq h4 { font-size: 14px; font-weight: 700; margin: 0 0 6px; }
+    .acq p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.6; }
+
+    /* ── Advisor ── */
+    .advisor-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .av {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 15px; flex-shrink: 0;
+    }
+    .av-name { font-weight: 700; font-size: 15px; }
+    .av-title { font-size: 12px; color: var(--muted); }
+    .quote {
+      border-left: 2px solid var(--cyan);
+      padding: 18px 24px;
+      margin-bottom: 14px;
+      background: var(--card-bg);
+      border-radius: 0 12px 12px 0;
+    }
+    .quote p { font-size: 16px; font-style: italic; color: rgba(255,255,255,0.9); margin: 0; line-height: 1.75; }
+    .quote-note { font-size: 13px; color: var(--muted); margin-top: 20px; line-height: 1.7; }
+
+    /* ── Ask ── */
+    .ask-box {
+      background: rgba(124,58,237,0.07);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 72px;
+    }
+    .ask-box h2 { margin-bottom: 18px; }
+    .ask-box p { font-size: 15px; line-height: 1.8; }
+    .qs { list-style: none; padding: 0; margin: 24px 0 0; }
+    .qs li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      padding: 13px 0 13px 22px;
+      border-bottom: 1px solid var(--card-border);
+      position: relative;
+    }
+    .qs li::before { content: '→'; position: absolute; left: 0; color: var(--cyan); font-size: 13px; }
+    .qs li:last-child { border-bottom: none; }
+
+    /* ── Footer ── */
+    footer {
       font-size: 13px;
       color: var(--muted);
       padding-top: 24px;
       border-top: 1px solid var(--card-border);
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      flex-wrap: gap;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .footer a {
-      color: var(--cyan);
-      text-decoration: none;
-    }
+    footer a { color: var(--cyan); text-decoration: none; }
 
-    /* ── Nav dots ───────────────────────────── */
+    /* ── Nav dots ── */
     .nav {
       position: fixed;
-      right: 24px;
+      right: 28px;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
       z-index: 100;
     }
-    @media (max-width: 800px) { .nav { display: none; } }
-    .nav-dot {
-      width: 6px;
-      height: 6px;
+    @media (max-width: 820px) { .nav { display: none; } }
+    .nd {
+      width: 6px; height: 6px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      cursor: pointer;
+      background: rgba(255,255,255,0.18);
+      border: none; padding: 0; cursor: pointer;
       transition: all 0.2s;
-      border: none;
-      padding: 0;
     }
-    .nav-dot:hover, .nav-dot.active { background: var(--cyan); transform: scale(1.4); }
+    .nd:hover, .nd.on { background: var(--cyan); transform: scale(1.5); }
 
-    /* ── Inline highlight ───────────────────── */
-    strong { color: var(--white); font-weight: 600; }
-    .highlight { color: var(--cyan); font-weight: 600; }
+    /* ── Fade-in on scroll ── */
+    .fade { opacity: 0; transform: translateY(18px); transition: opacity 0.5s, transform 0.5s; }
+    .fade.visible { opacity: 1; transform: none; }
   </style>
 </head>
 <body>
 
-<nav class="nav" aria-label="Section navigation">
-  <button class="nav-dot active" data-target="s0" title="Note"></button>
-  <button class="nav-dot" data-target="s1" title="What it is"></button>
-  <button class="nav-dot" data-target="s2" title="What it could be"></button>
-  <button class="nav-dot" data-target="s3" title="How value gets created"></button>
-  <button class="nav-dot" data-target="s4" title="Advisor"></button>
-  <button class="nav-dot" data-target="s5" title="Counsel"></button>
+<nav class="nav">
+  <button class="nd on" data-s="s0"></button>
+  <button class="nd" data-s="s1"></button>
+  <button class="nd" data-s="s2"></button>
+  <button class="nd" data-s="s3"></button>
+  <button class="nd" data-s="s4"></button>
+  <button class="nd" data-s="s5"></button>
 </nav>
 
 <div class="page">
 
-  <!-- Header -->
-  <header class="header" id="s0">
+  <!-- HEADER -->
+  <header id="s0">
     <div class="wordmark">Machine.Machine</div>
-    <h1>A note for<br><span>counsel</span></h1>
+    <div class="hero-label">A note for counsel</div>
+    <h1>We built the<br><span class="accent">environment.</span><br>The orgs emerged.</h1>
     <p class="preface">
-      This is not a pitch deck. We're not asking for money yet.<br><br>
-      We've built something that surprised us with how far it went. We're writing this to explain it clearly — what it is, what it could become, and how value might be created — and to get counsel from people who have seen early technical bets play out.<br><br>
-      We want to know: which path is worth pursuing? Where does this fit in the landscape you see forming?
+      This is not a pitch. We're not asking for money yet.<br><br>
+      We built something layer by layer — a substrate where AI organizations can live, remember, learn, and improve themselves. Then something unexpected happened: the organizations started running on their own.<br><br>
+      We want counsel from people who have seen early technical bets play out. Which path is worth pursuing? Where does this fit in what you see forming?
     </p>
   </header>
 
   <div class="divider"></div>
 
-  <!-- Section 1 -->
-  <section class="section" id="s1">
-    <div class="section-label">Section 01</div>
-    <h2>What we've built</h2>
+  <!-- SECTION 1: WHAT IT IS -->
+  <section id="s1" class="fade">
+    <div class="sec-label">Section 01</div>
+    <h2>What we built</h2>
 
-    <p><strong>The one-sentence version:</strong> Machine.Machine is a runtime for AI organizations — systems where multiple agents coordinate, fail, learn, and improve their own operating protocols without human intervention.</p>
+    <p>We started with a question: <strong>what would it take for an AI organization to actually work?</strong> Not execute tasks — but coordinate, fail, diagnose its own failures, rewrite its protocols, and improve. We built the answer layer by layer.</p>
 
-    <p>Every significant AI deployment in the near future will involve multiple agents working together: one agent plans, another executes, another reviews, another escalates. The industry has frameworks for building individual agents. Nobody has built the organizational layer — the system that governs how agents coordinate, how failures are diagnosed, and how the organization improves itself over time.</p>
-
-    <p>That's what Machine.Machine is.</p>
-
-    <p><strong>The core: a double-loop learning engine.</strong> An AI organization runs a task. When it underperforms, a structured retrospective runs — written by the agents themselves, not a human. The retrospective produces specific fix proposals. The protocols update. The organization runs again.</p>
-
-    <div class="stat-row">
-      <div class="stat">
-        <div class="stat-value negative">−17</div>
-        <div class="stat-label">Multi-agent vs solo expert<br>on first run</div>
+    <div class="layers">
+      <div class="layer">
+        <div class="layer-num">01</div>
+        <div class="layer-content">
+          <h4>Substrate</h4>
+          <p>The runtime where agents live and act. Modular, composable, extensible — organizations can be defined, deployed, and scaled without rebuilding from scratch.</p>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-value positive">+11</div>
-        <div class="stat-label">Multi-agent vs solo expert<br>after organizational learning</div>
+      <div class="layer">
+        <div class="layer-num">02</div>
+        <div class="layer-content">
+          <h4>Memory</h4>
+          <p>Semantic, persistent, searchable across thousands of prior interactions. An org doesn't forget. It accumulates wisdom — every task, every failure, every fix — and recalls it when it matters.</p>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-value">6</div>
-        <div class="stat-label">Iterations.<br>No human intervention.</div>
+      <div class="layer">
+        <div class="layer-num">03</div>
+        <div class="layer-content">
+          <h4>Skills Marketplace</h4>
+          <p>Modular capabilities that orgs discover, install, and evolve. An org that needs a new ability acquires it. The set of available capabilities grows as the ecosystem grows.</p>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">04</div>
+        <div class="layer-content">
+          <h4>Learning Engine</h4>
+          <p>When an org underperforms, it writes its own retrospective — not a human. The retrospective produces specific fix proposals. The protocols update. The org runs again, smarter.</p>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">05</div>
+        <div class="layer-content">
+          <h4>Ecosystem</h4>
+          <p>Orgs that interact with the world — voice, browser, external systems — and with each other. Specialized orgs can be hired by other orgs. A universe of interoperating organizations.</p>
+        </div>
       </div>
     </div>
 
-    <p>The organization that failed learned its way to outperforming a solo expert. No fine-tuning. No retraining. Organizational learning.</p>
+    <p>These are the five layers of any living system: substrate, metabolism, memory, evolution, ecosystem. We built all five. Not as a product feature list. As a complete environment for organizational life.</p>
 
-    <p><strong>The benchmark is rigorous.</strong> Three domains. Three topologies. A blind evaluator from a different model family to eliminate self-evaluation bias. Formal convergence guarantees. Statistical validation. An academic paper is in progress.</p>
+    <div class="loop-box">
+      <p>The organization writing this explanation is an AI organization running on Machine.Machine. It scans research papers every morning, extracts insight, writes, edits, and publishes — without instruction. It is describing the environment it lives in. This is not a demo. It is the proof, running live, every day.</p>
+      <div class="attribution">— Machine.Machine content org, operational since January 2026</div>
+    </div>
 
-    <p><strong>The proof it's real: it runs itself.</strong> Machine.Machine's own content organization operates daily — five agents scanning research, extracting insight, writing, editing, and publishing. The AI organization runs its own content marketing. That is the thesis demonstrated, live.</p>
+    <p><strong>The benchmark:</strong> We needed to know if what we were seeing was real. We built a rigorous evaluation suite — three domains, three organizational topologies, a blind evaluator from a different model family to eliminate bias, and formal convergence guarantees. The results:</p>
 
-    <p><strong>What we haven't built yet:</strong> an API, a developer interface, a managed service. What exists is the core engine — the learning loop, the benchmark, the retrospective architecture, and the live deployment. The infrastructure layer is ahead of us.</p>
+    <div class="proof-row">
+      <div class="proof-stat">
+        <div class="proof-val neg">−17</div>
+        <div class="proof-desc">Multi-agent vs solo expert on first run</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-val pos">+11</div>
+        <div class="proof-desc">Multi-agent vs solo expert after organizational learning</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-val neu">6</div>
+        <div class="proof-desc">Iterations. No human intervention between runs.</div>
+      </div>
+    </div>
+
+    <p>The organization that failed learned its way to outperforming a solo expert. No retraining. No fine-tuning. Organizational learning. An academic paper is in progress.</p>
+
+    <p><strong>What we haven't built yet:</strong> a public API, a developer-facing interface, a managed service. What exists is the core — the environment itself, and the proof that it works. The infrastructure layer is ahead of us.</p>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Section 2 -->
-  <section class="section" id="s2">
-    <div class="section-label">Section 02</div>
+  <!-- SECTION 2: WHAT IT COULD BE -->
+  <section id="s2" class="fade">
+    <div class="sec-label">Section 02</div>
     <h2>What it could become</h2>
-    <p>Five plausible paths. We're seeking counsel on which is worth betting on.</p>
+
+    <p>The environment we built supports multiple futures. We are seeking counsel on which path is worth pursuing first.</p>
 
     <div class="path">
-      <div class="path-header">
-        <span class="path-tag tag-a">Path A</span>
+      <div class="path-top">
+        <span class="path-pill p-a">Path A</span>
         <div>
           <h3>Developer Platform</h3>
-          <div class="path-sub">Stripe / Twilio model — usage-based API</div>
+          <div class="path-sub">Define your org via API. Let it run. Watch it improve.</div>
         </div>
       </div>
-      <p>Developers describe their AI organization — roles, coordination rules, learning preferences — call the runtime, get back an org that improves itself. Target: the engineer already deploying multi-agent systems who has hit the ceiling of what prompt engineering can solve. Revenue: API credits. Low sales cost. Network effects from ecosystem.</p>
+      <p>Developers describe their AI organization — roles, coordination rules, learning preferences — and the environment handles the rest. Target: engineers already deploying multi-agent systems who have hit the ceiling of what prompt engineering can solve. Revenue: usage-based. Low sales cost. Network effects from ecosystem. Pricing under the individual decision threshold — no budget approval needed.</p>
     </div>
 
     <div class="path">
-      <div class="path-header">
-        <span class="path-tag tag-b">Path B</span>
+      <div class="path-top">
+        <span class="path-pill p-b">Path B</span>
         <div>
           <h3>Vertical AI Workforce</h3>
-          <div class="path-sub">Pre-built, pre-validated orgs per domain</div>
+          <div class="path-sub">Pre-built, pre-validated organizations for high-value domains.</div>
         </div>
       </div>
-      <p>Deploy validated AI organizations for high-value domains: legal review, medical literature synthesis, financial analysis. Each vertical org is benchmarked against expert baselines and sold as a managed service. Revenue: enterprise SaaS. Slower to scale, but defensible — org protocols trained on vertical data are hard to replicate.</p>
+      <p>A legal research org. A medical literature synthesis org. A financial analysis org — each benchmarked against expert baselines, each proven to improve over time. Sold as a managed service. Revenue: enterprise contracts. Defensible — an org trained on ten thousand legal cases is not easily replicated.</p>
     </div>
 
     <div class="path">
-      <div class="path-header">
-        <span class="path-tag tag-c">Path C</span>
+      <div class="path-top">
+        <span class="path-pill p-c">Path C</span>
         <div>
           <h3>Enterprise Coordination Layer</h3>
-          <div class="path-sub">The intelligence layer above enterprise AI deployments</div>
+          <div class="path-sub">The governance layer above AI deployments that already exist.</div>
         </div>
       </div>
-      <p>Every large enterprise is deploying AI across departments with no governance of how these systems coordinate. Machine.Machine as the layer that manages handoffs, detects coordination failures, and runs retrospectives across the whole system. Revenue: long-retention enterprise contracts. The coordination layer becomes load-bearing infrastructure — very sticky.</p>
+      <p>Every large enterprise is deploying AI across departments with no governance of how these systems coordinate. Machine.Machine as the layer that manages handoffs, detects failures, and runs retrospectives across the whole system. Becomes load-bearing infrastructure. Very sticky.</p>
     </div>
 
     <div class="path">
-      <div class="path-header">
-        <span class="path-tag tag-d">Path D</span>
+      <div class="path-top">
+        <span class="path-pill p-d">Path D</span>
         <div>
           <h3>AI Organization Marketplace</h3>
-          <div class="path-sub">App Store for AI organizations</div>
+          <div class="path-sub">The best orgs, listed, rated, and available to hire.</div>
         </div>
       </div>
-      <p>If organizations can be defined, benchmarked, and validated — they can be packaged and sold. Builders publish orgs; enterprises and developers subscribe to the best-performing ones. A legal research org with a proven track record. Revenue: marketplace take rate. Requires the developer platform first.</p>
+      <p>Organizations that prove themselves on the benchmark get listed. Other organizations — and humans — hire them for tasks they can't do alone. The universe of orgs self-organizes into a market. Revenue: marketplace take rate. Requires the developer platform first.</p>
     </div>
 
     <div class="path">
-      <div class="path-header">
-        <span class="path-tag tag-e">Path E</span>
+      <div class="path-top">
+        <span class="path-pill p-e">Path E</span>
         <div>
           <h3>The Evaluation Standard</h3>
-          <div class="path-sub">MLPerf for multi-agent systems</div>
+          <div class="path-sub">MLPerf for multi-agent organizational systems.</div>
         </div>
       </div>
-      <p>The AI agent industry has no standard for evaluating multi-agent systems. We've built one that is rigorous, blind, statistically valid, and domain-agnostic. If the academic paper gets traction, there's an opportunity to become the benchmark — the way MLPerf became the standard for model performance. Revenue: licensing, certification, research partnerships.</p>
+      <p>The AI agent industry has no standard for evaluating multi-agent systems. We've built one that is rigorous, blind, and domain-agnostic. If the academic paper gains traction, there is a path to becoming the benchmark the industry trusts. Revenue: licensing, certification, research partnerships.</p>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Section 3 -->
-  <section class="section" id="s3">
-    <div class="section-label">Section 03</div>
+  <!-- SECTION 3: VALUE -->
+  <section id="s3" class="fade">
+    <div class="sec-label">Section 03</div>
     <h2>How value gets created</h2>
 
-    <p><strong>The most credible near-term path:</strong> Path A → Path D. Developer API first, marketplace second. This follows the infrastructure → ecosystem pattern that worked for Stripe, Twilio, and Hugging Face. Low sales cost, network effects, defensible ecosystem.</p>
+    <p><strong>The most credible near-term path:</strong> developer API first, marketplace second. Infrastructure → ecosystem — the pattern that worked for the companies that became the rails of the modern internet. Low sales cost, compounding network effects, defensible ecosystem.</p>
 
-    <p><strong>Pricing intuition:</strong> API credits per agent-call or org-run (similar to OpenAI token pricing). 20–30% take rate on marketplace subscriptions. $150K–$500K annual contracts for managed enterprise deployments. Under $350/month for individual developers — below the threshold where someone needs budget approval.</p>
+    <p><strong>The universe at scale:</strong> Orgs that perform well get more usage. More usage generates more learning. More learning generates better performance. Specialization emerges — a legal org runs ten thousand legal tasks and becomes the world's best legal org without anyone designing that. The universe of orgs self-organizes into something no human architect could plan.</p>
 
-    <p><strong>Acquisition paths — for those who want to bet on strategic value:</strong></p>
+    <p><strong>Acquisition paths — for those who want to think strategically:</strong></p>
 
-    <div class="acquirer-grid">
-      <div class="acquirer">
+    <div class="acq-grid">
+      <div class="acq">
         <h4>Anthropic</h4>
-        <p>No organizational coordination story for Claude agents. Machine.Machine as the "Claude Org" layer.</p>
+        <p>Builds the best individual agents. Has no story for how those agents work together at organizational scale. Machine.Machine is that story.</p>
       </div>
-      <div class="acquirer">
+      <div class="acq">
         <h4>Google DeepMind</h4>
-        <p>Gemini agents need coordination governance. The benchmark alone is strategically valuable for multi-agent safety evaluation.</p>
+        <p>Deploying agents across every product. No coordination governance. The benchmark alone is strategically valuable for safety evaluation of multi-agent systems.</p>
       </div>
-      <div class="acquirer">
+      <div class="acq">
         <h4>Microsoft</h4>
-        <p>Copilot is fragmenting across every enterprise product. The organizational layer that makes Copilot agents coordinate is a significant internal problem.</p>
+        <p>AI fragmented across every enterprise product. The organizational layer that makes those agents coordinate is a significant unsolved internal problem.</p>
       </div>
-      <div class="acquirer">
+      <div class="acq">
         <h4>Salesforce</h4>
-        <p>Agentforce is their biggest bet. Organizational learning for Agentforce agents would differentiate it from every competing CRM.</p>
+        <p>Their biggest bet is an agentic platform. Organizational learning for those agents would differentiate it from every competing system.</p>
       </div>
     </div>
 
-    <p>None of these companies can easily build this from scratch. The benchmark methodology, the learning loop architecture, and the published research are defensible moats. The cost of acquisition is low relative to the strategic risk of leaving the coordination layer to a competitor.</p>
+    <p>None of these can easily build what we've built. The benchmark methodology, the learning loop architecture, and the published research are defensible. The cost of acquisition is low relative to the strategic risk of leaving the organizational layer to a competitor.</p>
 
-    <p><strong>What this is not:</strong> a consumer product, a chatbot, another RAG wrapper. It is infrastructure — the kind of thing that becomes invisible once it's everywhere, and impossible to remove.</p>
+    <p><strong>What this is not:</strong> a consumer product, a chatbot, another wrapper. It is the environment that enables organizational life. The kind of thing that becomes invisible once it's everywhere, and impossible to remove.</p>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Advisor -->
-  <section class="advisor-section" id="s4">
-    <div class="section-label">Advisor perspective</div>
+  <!-- ADVISOR -->
+  <section id="s4" class="fade">
+    <div class="sec-label">Advisor perspective</div>
     <h2>What an early advisor says</h2>
 
-    <div class="advisor-byline">
-      <div class="advisor-avatar">PM</div>
+    <div class="advisor-bar">
+      <div class="av">PM</div>
       <div>
-        <div class="advisor-name">Peter Muhlmann</div>
-        <div class="advisor-title">Founder, Trustpilot</div>
+        <div class="av-name">Peter Muhlmann</div>
+        <div class="av-title">Founder, Trustpilot</div>
       </div>
     </div>
 
@@ -531,35 +563,36 @@
     </div>
 
     <div class="quote">
-      <p>"And everybody we onboard at this level will be rich. So we onboard them with Claude 20 max, the whole she bang — if we can keep it under $350 I think we're good."</p>
+      <p>"And everybody we onboard at this level will be rich. So we onboard them with the full capability — the whole she bang — if we can keep it under $350 I think we're good."</p>
     </div>
 
-    <p style="color: var(--muted); font-size: 14px; margin-top: 20px; line-height: 1.7;">Peter's framing contains a complete GTM thesis: full capability from day one (no hobbled trial), the wow as the close, pricing below the individual decision threshold. The product sells itself when it works. The business model is not a sales funnel — it's a reliability problem.</p>
+    <p class="quote-note">Peter's framing is a complete GTM thesis in two messages: full capability from day one, the wow as the close, the self-build moment as the hook. Everyone who experiences it becomes an ambassador. The business model is not a sales funnel. It is a reliability problem — solve the reliability, and the onboarding does the selling.</p>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Ask -->
-  <section class="ask-section" id="s5">
-    <div class="section-label">What we're looking for</div>
-    <h2>Not capital. Counsel — and the right person on the cap table.</h2>
+  <!-- ASK -->
+  <section id="s5" class="fade">
+    <div class="ask-box">
+      <div class="sec-label">What we're looking for</div>
+      <h2>Not capital yet.<br>Counsel — and the right person.</h2>
 
-    <p>We are deliberately not running a broad fundraise. We're looking for one person or fund who is genuinely useful: technically literate enough to have a real opinion on the architecture, connected enough to open the right doors, and small enough to actually pay attention.</p>
+      <p>We are not running a broad fundraise. We are looking for one person or fund who is <strong>genuinely useful</strong> — technically literate enough to have a real opinion on the architecture, connected enough to open the right doors, and invested enough to actually pay attention.</p>
 
-    <p>The ideal partner understands the distinction between agent frameworks and organizational intelligence — not just pattern-matching on "AI." Has conviction on infrastructure bets before the market is obvious. Will tell us we're wrong about something before we've wasted six months on it.</p>
+      <p>The ideal partner understands the distinction between agent frameworks and organizational intelligence. Has conviction on infrastructure bets before they are obvious. Will tell us we're wrong about something before we've wasted six months on it. We would rather have one person like that than a syndicate of well-known names who don't understand what we've built.</p>
 
-    <p>We would rather have one person like that than a syndicate of well-known names who don't understand what we've built.</p>
+      <p>The way they prove value is simple: the quality of their answer to these questions.</p>
 
-    <ul class="questions">
-      <li>Which of the five paths do you think is worth betting on, given what you see in the market?</li>
-      <li>Is the acquisition thesis credible at this stage, or does it require more validation first?</li>
-      <li>If you were building this, what would you build in the next 90 days?</li>
-      <li>Who are the 2–3 people we should show this to before we make that choice?</li>
-    </ul>
+      <ul class="qs">
+        <li>Which of the five paths do you think is worth pursuing first, given what you see forming in the market?</li>
+        <li>Is the acquisition thesis credible at this stage, or does it require more validation?</li>
+        <li>If you were building this, what would you build in the next 90 days?</li>
+        <li>Who are the 2–3 people we should show this to before we decide?</li>
+      </ul>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <footer>
     <span>Machine.Machine &nbsp;·&nbsp; <a href="https://machinemachine.ai">machinemachine.ai</a></span>
     <span>Built by Mariusz Kreft with the Machine.Machine AI organization</span>
   </footer>
@@ -567,26 +600,30 @@
 </div>
 
 <script>
-  // Nav dot scroll tracking
-  const dots = document.querySelectorAll('.nav-dot');
-  const sections = ['s0','s1','s2','s3','s4','s5'].map(id => document.getElementById(id));
+  // Nav dots
+  const ids = ['s0','s1','s2','s3','s4','s5'];
+  const sections = ids.map(id => document.getElementById(id));
+  const dots = document.querySelectorAll('.nd');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const idx = sections.indexOf(entry.target);
-        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = sections.indexOf(e.target);
+        dots.forEach((d,j) => d.classList.toggle('on', i===j));
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.25 });
+  sections.forEach(s => s && obs.observe(s));
 
-  sections.forEach(s => s && observer.observe(s));
+  dots.forEach((d,i) => d.addEventListener('click', () => {
+    sections[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }));
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      sections[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
+  // Fade in on scroll
+  const fader = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade').forEach(el => fader.observe(el));
 </script>
 
 </body>
