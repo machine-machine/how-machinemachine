@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine.Machine — A Note for Counsel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:         #0F1729;
+      --navy2:        #111d38;
+      --purple:       #7C3AED;
+      --purple-light: #9d5ff5;
+      --cyan:         #00D9FF;
+      --cyan-dim:     #00b8d9;
+      --white:        #FFFFFF;
+      --muted:        rgba(255,255,255,0.55);
+      --card-bg:      rgba(255,255,255,0.04);
+      --card-border:  rgba(255,255,255,0.08);
+      --text-max:     680px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--navy);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ─────────────────────────────── */
+    .page {
+      max-width: var(--text-max);
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    .header {
+      margin-bottom: 72px;
+    }
+    .wordmark {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 32px;
+    }
+    .header h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 0 0 24px;
+      letter-spacing: -0.02em;
+    }
+    .header h1 span {
+      background: linear-gradient(135deg, var(--cyan), var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .preface {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--muted);
+      border-left: 2px solid var(--purple);
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    /* ── Sections ───────────────────────────── */
+    .section {
+      margin-bottom: 72px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 28px;
+      line-height: 1.2;
+    }
+    .section p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
+      margin: 0 0 20px;
+    }
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── Stats bar ──────────────────────────── */
+    .stat-row {
+      display: flex;
+      gap: 24px;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 140px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--cyan);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-value.positive { color: #4ade80; }
+    .stat-value.negative { color: #f87171; }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── Paths ──────────────────────────────── */
+    .path {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .path-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .path-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tag-a { background: rgba(0,217,255,0.12); color: var(--cyan); }
+    .tag-b { background: rgba(124,58,237,0.15); color: var(--purple-light); }
+    .tag-c { background: rgba(74,222,128,0.12); color: #4ade80; }
+    .tag-d { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .tag-e { background: rgba(248,113,113,0.12); color: #f87171; }
+    .path h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+    .path-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .path p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.72);
+      margin: 0;
+    }
+
+    /* ── Peter quotes ───────────────────────── */
+    .advisor-section {
+      margin-bottom: 72px;
+    }
+    .advisor-byline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .advisor-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .advisor-name {
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .advisor-title {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .quote {
+      border-left: 2px solid var(--cyan);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      background: var(--card-bg);
+      border-radius: 0 12px 12px 0;
+    }
+    .quote p {
+      font-size: 17px;
+      line-height: 1.7;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+    }
+
+    /* ── Acquirers ──────────────────────────── */
+    .acquirer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 24px 0;
+    }
+    @media (max-width: 500px) { .acquirer-grid { grid-template-columns: 1fr; } }
+    .acquirer {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .acquirer h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+    .acquirer p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ── Ask section ────────────────────────── */
+    .ask-section {
+      background: rgba(124,58,237,0.08);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 72px;
+    }
+    .ask-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      letter-spacing: -0.01em;
+    }
+    .ask-section p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.78);
+      margin: 0 0 20px;
+    }
+    .questions {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+    }
+    .questions li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--card-border);
+      padding-left: 20px;
+      position: relative;
+    }
+    .questions li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 13px;
+    }
+    .questions li:last-child { border-bottom: none; }
+
+    /* ── Divider ────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--card-border);
+      margin: 64px 0;
+    }
+
+    /* ── Footer ─────────────────────────────── */
+    .footer {
+      font-size: 13px;
+      color: var(--muted);
+      padding-top: 24px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: gap;
+      gap: 12px;
+    }
+    .footer a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    /* ── Nav dots ───────────────────────────── */
+    .nav {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 100;
+    }
+    @media (max-width: 800px) { .nav { display: none; } }
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      padding: 0;
+    }
+    .nav-dot:hover, .nav-dot.active { background: var(--cyan); transform: scale(1.4); }
+
+    /* ── Inline highlight ───────────────────── */
+    strong { color: var(--white); font-weight: 600; }
+    .highlight { color: var(--cyan); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Section navigation">
+  <button class="nav-dot active" data-target="s0" title="Note"></button>
+  <button class="nav-dot" data-target="s1" title="What it is"></button>
+  <button class="nav-dot" data-target="s2" title="What it could be"></button>
+  <button class="nav-dot" data-target="s3" title="How value gets created"></button>
+  <button class="nav-dot" data-target="s4" title="Advisor"></button>
+  <button class="nav-dot" data-target="s5" title="Counsel"></button>
+</nav>
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="header" id="s0">
+    <div class="wordmark">Machine.Machine</div>
+    <h1>A note for<br><span>counsel</span></h1>
+    <p class="preface">
+      This is not a pitch deck. We're not asking for money yet.<br><br>
+      We've built something that surprised us with how far it went. We're writing this to explain it clearly — what it is, what it could become, and how value might be created — and to get counsel from people who have seen early technical bets play out.<br><br>
+      We want to know: which path is worth pursuing? Where does this fit in the landscape you see forming?
+    </p>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- Section 1 -->
+  <section class="section" id="s1">
+    <div class="section-label">Section 01</div>
+    <h2>What we've built</h2>
+
+    <p><strong>The one-sentence version:</strong> Machine.Machine is a runtime for AI organizations — systems where multiple agents coordinate, fail, learn, and improve their own operating protocols without human intervention.</p>
+
+    <p>Every significant AI deployment in the near future will involve multiple agents working together: one agent plans, another executes, another reviews, another escalates. The industry has frameworks for building individual agents. Nobody has built the organizational layer — the system that governs how agents coordinate, how failures are diagnosed, and how the organization improves itself over time.</p>
+
+    <p>That's what Machine.Machine is.</p>
+
+    <p><strong>The core: a double-loop learning engine.</strong> An AI organization runs a task. When it underperforms, a structured retrospective runs — written by the agents themselves, not a human. The retrospective produces specific fix proposals. The protocols update. The organization runs again.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-value negative">−17</div>
+        <div class="stat-label">Multi-agent vs solo expert<br>on first run</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value positive">+11</div>
+        <div class="stat-label">Multi-agent vs solo expert<br>after organizational learning</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Iterations.<br>No human intervention.</div>
+      </div>
+    </div>
+
+    <p>The organization that failed learned its way to outperforming a solo expert. No fine-tuning. No retraining. Organizational learning.</p>
+
+    <p><strong>The benchmark is rigorous.</strong> Three domains. Three topologies. A blind evaluator from a different model family to eliminate self-evaluation bias. Formal convergence guarantees. Statistical validation. An academic paper is in progress.</p>
+
+    <p><strong>The proof it's real: it runs itself.</strong> Machine.Machine's own content organization operates daily — five agents scanning research, extracting insight, writing, editing, and publishing. The AI organization runs its own content marketing. That is the thesis demonstrated, live.</p>
+
+    <p><strong>What we haven't built yet:</strong> an API, a developer interface, a managed service. What exists is the core engine — the learning loop, the benchmark, the retrospective architecture, and the live deployment. The infrastructure layer is ahead of us.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 2 -->
+  <section class="section" id="s2">
+    <div class="section-label">Section 02</div>
+    <h2>What it could become</h2>
+    <p>Five plausible paths. We're seeking counsel on which is worth betting on.</p>
+
+    <div class="path">
+      <div class="path-header">
+        <span class="path-tag tag-a">Path A</span>
+        <div>
+          <h3>Developer Platform</h3>
+          <div class="path-sub">Stripe / Twilio model — usage-based API</div>
+        </div>
+      </div>
+      <p>Developers describe their AI organization — roles, coordination rules, learning preferences — call the runtime, get back an org that improves itself. Target: the engineer already deploying multi-agent systems who has hit the ceiling of what prompt engineering can solve. Revenue: API credits. Low sales cost. Network effects from ecosystem.</p>
+    </div>
+
+    <div class="path">
+      <div class="path-header">
+        <span class="path-tag tag-b">Path B</span>
+        <div>
+          <h3>Vertical AI Workforce</h3>
+          <div class="path-sub">Pre-built, pre-validated orgs per domain</div>
+        </div>
+      </div>
+      <p>Deploy validated AI organizations for high-value domains: legal review, medical literature synthesis, financial analysis. Each vertical org is benchmarked against expert baselines and sold as a managed service. Revenue: enterprise SaaS. Slower to scale, but defensible — org protocols trained on vertical data are hard to replicate.</p>
+    </div>
+
+    <div class="path">
+      <div class="path-header">
+        <span class="path-tag tag-c">Path C</span>
+        <div>
+          <h3>Enterprise Coordination Layer</h3>
+          <div class="path-sub">The intelligence layer above enterprise AI deployments</div>
+        </div>
+      </div>
+      <p>Every large enterprise is deploying AI across departments with no governance of how these systems coordinate. Machine.Machine as the layer that manages handoffs, detects coordination failures, and runs retrospectives across the whole system. Revenue: long-retention enterprise contracts. The coordination layer becomes load-bearing infrastructure — very sticky.</p>
+    </div>
+
+    <div class="path">
+      <div class="path-header">
+        <span class="path-tag tag-d">Path D</span>
+        <div>
+          <h3>AI Organization Marketplace</h3>
+          <div class="path-sub">App Store for AI organizations</div>
+        </div>
+      </div>
+      <p>If organizations can be defined, benchmarked, and validated — they can be packaged and sold. Builders publish orgs; enterprises and developers subscribe to the best-performing ones. A legal research org with a proven track record. Revenue: marketplace take rate. Requires the developer platform first.</p>
+    </div>
+
+    <div class="path">
+      <div class="path-header">
+        <span class="path-tag tag-e">Path E</span>
+        <div>
+          <h3>The Evaluation Standard</h3>
+          <div class="path-sub">MLPerf for multi-agent systems</div>
+        </div>
+      </div>
+      <p>The AI agent industry has no standard for evaluating multi-agent systems. We've built one that is rigorous, blind, statistically valid, and domain-agnostic. If the academic paper gets traction, there's an opportunity to become the benchmark — the way MLPerf became the standard for model performance. Revenue: licensing, certification, research partnerships.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 3 -->
+  <section class="section" id="s3">
+    <div class="section-label">Section 03</div>
+    <h2>How value gets created</h2>
+
+    <p><strong>The most credible near-term path:</strong> Path A → Path D. Developer API first, marketplace second. This follows the infrastructure → ecosystem pattern that worked for Stripe, Twilio, and Hugging Face. Low sales cost, network effects, defensible ecosystem.</p>
+
+    <p><strong>Pricing intuition:</strong> API credits per agent-call or org-run (similar to OpenAI token pricing). 20–30% take rate on marketplace subscriptions. $150K–$500K annual contracts for managed enterprise deployments. Under $350/month for individual developers — below the threshold where someone needs budget approval.</p>
+
+    <p><strong>Acquisition paths — for those who want to bet on strategic value:</strong></p>
+
+    <div class="acquirer-grid">
+      <div class="acquirer">
+        <h4>Anthropic</h4>
+        <p>No organizational coordination story for Claude agents. Machine.Machine as the "Claude Org" layer.</p>
+      </div>
+      <div class="acquirer">
+        <h4>Google DeepMind</h4>
+        <p>Gemini agents need coordination governance. The benchmark alone is strategically valuable for multi-agent safety evaluation.</p>
+      </div>
+      <div class="acquirer">
+        <h4>Microsoft</h4>
+        <p>Copilot is fragmenting across every enterprise product. The organizational layer that makes Copilot agents coordinate is a significant internal problem.</p>
+      </div>
+      <div class="acquirer">
+        <h4>Salesforce</h4>
+        <p>Agentforce is their biggest bet. Organizational learning for Agentforce agents would differentiate it from every competing CRM.</p>
+      </div>
+    </div>
+
+    <p>None of these companies can easily build this from scratch. The benchmark methodology, the learning loop architecture, and the published research are defensible moats. The cost of acquisition is low relative to the strategic risk of leaving the coordination layer to a competitor.</p>
+
+    <p><strong>What this is not:</strong> a consumer product, a chatbot, another RAG wrapper. It is infrastructure — the kind of thing that becomes invisible once it's everywhere, and impossible to remove.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Advisor -->
+  <section class="advisor-section" id="s4">
+    <div class="section-label">Advisor perspective</div>
+    <h2>What an early advisor says</h2>
+
+    <div class="advisor-byline">
+      <div class="advisor-avatar">PM</div>
+      <div>
+        <div class="advisor-name">Peter Muhlmann</div>
+        <div class="advisor-title">Founder, Trustpilot</div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <p>"They need that wow experience I had when the agent was actually capable. And none of those hiccups where it can't remember, gives errors. If it can code out of the box and do stuff out of the box and self build — it will be a success every time."</p>
+    </div>
+
+    <div class="quote">
+      <p>"And everybody we onboard at this level will be rich. So we onboard them with Claude 20 max, the whole she bang — if we can keep it under $350 I think we're good."</p>
+    </div>
+
+    <p style="color: var(--muted); font-size: 14px; margin-top: 20px; line-height: 1.7;">Peter's framing contains a complete GTM thesis: full capability from day one (no hobbled trial), the wow as the close, pricing below the individual decision threshold. The product sells itself when it works. The business model is not a sales funnel — it's a reliability problem.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Ask -->
+  <section class="ask-section" id="s5">
+    <div class="section-label">What we're looking for</div>
+    <h2>Not capital. Counsel — and the right person on the cap table.</h2>
+
+    <p>We are deliberately not running a broad fundraise. We're looking for one person or fund who is genuinely useful: technically literate enough to have a real opinion on the architecture, connected enough to open the right doors, and small enough to actually pay attention.</p>
+
+    <p>The ideal partner understands the distinction between agent frameworks and organizational intelligence — not just pattern-matching on "AI." Has conviction on infrastructure bets before the market is obvious. Will tell us we're wrong about something before we've wasted six months on it.</p>
+
+    <p>We would rather have one person like that than a syndicate of well-known names who don't understand what we've built.</p>
+
+    <ul class="questions">
+      <li>Which of the five paths do you think is worth betting on, given what you see in the market?</li>
+      <li>Is the acquisition thesis credible at this stage, or does it require more validation first?</li>
+      <li>If you were building this, what would you build in the next 90 days?</li>
+      <li>Who are the 2–3 people we should show this to before we make that choice?</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>Machine.Machine &nbsp;·&nbsp; <a href="https://machinemachine.ai">machinemachine.ai</a></span>
+    <span>Built by Mariusz Kreft with the Machine.Machine AI organization</span>
+  </footer>
+
+</div>
+
+<script>
+  // Nav dot scroll tracking
+  const dots = document.querySelectorAll('.nav-dot');
+  const sections = ['s0','s1','s2','s3','s4','s5'].map(id => document.getElementById(id));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = sections.indexOf(entry.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => s && observer.observe(s));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      sections[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
